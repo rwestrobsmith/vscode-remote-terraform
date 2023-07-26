@@ -1,17 +1,26 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/java
 {
-	"name": "Java",
+	"name": "Terraform",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/java:0-17",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
 	"features": {
-		"ghcr.io/devcontainers/features/java:1": {
-			"version": "none",
-			"installMaven": "true",
-			"mavenVersion": "3.8.6",
-			"installGradle": "false"
-		}
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers-contrib/features/jfrog-cli:1": {},
+		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+		"ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers-contrib/features/aws-cdk:2": {},
+		"ghcr.io/customink/codespaces-features/sam-cli": {},
+		"ghcr.io/devcontainers-contrib/features/localstack:2": {},
+		"ghcr.io/devcontainers/features/terraform:1": {
+			"installTFsec": true,
+			"installTerraformDocs": true
+		},
+		"ghcr.io/devcontainers-contrib/features/terrascan:1": {},
+		"ghcr.io/devcontainers-contrib/features/checkov:1": {},
+		"ghcr.io/devcontainers-contrib/features/infracost:1": {}		
 	},
 
 	// Configure tool-specific properties.

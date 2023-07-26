@@ -3,24 +3,31 @@
 {
 	"name": "Terraform",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	// "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"HTTP_PROXY": "${localEnv:HTTP_PROXY}",
+			"HTTPS_PROXY": "${localEnv:HTTPS_PROXY}",
+			"NO_PROXY": "${localEnv:NO_PROXY}"
+		}
+	},
 
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/devcontainers/features/common-utils:2": {},
-		"ghcr.io/devcontainers-contrib/features/jfrog-cli:1": {},
-		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
-		"ghcr.io/devcontainers/features/aws-cli:1": {},
-		"ghcr.io/devcontainers-contrib/features/aws-cdk:2": {},
-		"ghcr.io/customink/codespaces-features/sam-cli": {},
-		"ghcr.io/devcontainers-contrib/features/localstack:2": {},
-		"ghcr.io/devcontainers/features/terraform:1": {
-			"installTFsec": true,
-			"installTerraformDocs": true
-		},
-		"ghcr.io/devcontainers-contrib/features/terrascan:1": {},
-		"ghcr.io/devcontainers-contrib/features/checkov:1": {},
-		"ghcr.io/devcontainers-contrib/features/infracost:1": {}		
+		"ghcr.io/devcontainers/features/node:1": {}
+		// "ghcr.io/devcontainers/features/common-utils:2": {},
+		// "ghcr.io/devcontainers-contrib/features/jfrog-cli:1": {},
+		// "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+		// "ghcr.io/devcontainers/features/aws-cli:1": {},
+		// "ghcr.io/devcontainers-contrib/features/aws-cdk:2": {},
+		// "ghcr.io/customink/codespaces-features/sam-cli": {},
+		// "ghcr.io/devcontainers-contrib/features/localstack:2": {},
+		// "ghcr.io/devcontainers/features/terraform:1": {
+		// 	"installTFsec": true,
+		// 	"installTerraformDocs": true
+		// },
+		// "ghcr.io/devcontainers-contrib/features/terrascan:1": {},
+		// "ghcr.io/devcontainers-contrib/features/checkov:1": {}
 	},
 
 	// Configure tool-specific properties.
@@ -32,7 +39,14 @@
 				"streetsidesoftware.code-spell-checker"
 			]
 		}
+	},
+
+	"containerEnv": {
+		"HTTP_PROXY": "${localEnv:HTTP_PROXY}",
+		"HTTPS_PROXY": "${localEnv:HTTPS_PROXY}",
+		"NO_PROXY": "${localEnv:NO_PROXY}"
 	}
+
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
